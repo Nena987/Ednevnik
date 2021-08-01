@@ -276,7 +276,7 @@ public class GradeController {
 	 */
 
 	@PutMapping(path = "/izmenaOcene/{ocenaId}")
-	@Secured({ "ROLE_ADMIN", "ROLE_TEACHER" })
+	@Secured({ "ROLE_ADMIN", "ROLE_TEACHER", "ROLE_CLASSTEACHER" })
 	@JsonView(Views.Private.class)
 	public ResponseEntity<?> izmenaOcene(@PathVariable Integer ocenaId,
 			@Validated(PutValidation.class) @RequestBody GradeDTO novaOcena, BindingResult result) {
@@ -307,7 +307,7 @@ public class GradeController {
 	 */
 
 	@DeleteMapping(path = "/brisanjeOcene/{ocenaId}")
-	@Secured({ "ROLE_ADMIN", "ROLE_TEACHER" })
+	@Secured({ "ROLE_ADMIN", "ROLE_TEACHER", "ROLE_CLASSTEACHER" })
 	@JsonView(Views.Private.class)
 	public ResponseEntity<?> brisanjeOcene(@PathVariable Integer ocenaId) {
 		if (!gradeRepository.existsById(ocenaId))
